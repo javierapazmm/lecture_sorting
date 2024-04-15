@@ -52,6 +52,18 @@ def selection_sort(seznam, direction):
 
     return seznam
 
+def insertion_sort(seznam):
+    size = len(seznam)
+    for i in range(1, size):
+        key = seznam[i]
+        j = i - 1
+        while j >= 0 and key < seznam[j]:
+            seznam[j+1] = seznam[j]
+            j -= 1
+        key = seznam[j + 1]
+
+    return seznam
+
 def bubble_sort(seznam):
     size = len(seznam)
     for i in range(size):
@@ -62,14 +74,17 @@ def bubble_sort(seznam):
 
     return seznam
 
+
 def main():
     file_name = "numbers.csv"
     data = read_data(file_name)
     seznam = [9, 2, 3, 4, 7, 5, 9, 12]
     selection = selection_sort(seznam, "s")
-    sort = bubble_sort(seznam)
+    bubble = bubble_sort(seznam)
+    insertion = insertion_sort(seznam)
 
-    print(sort)
+
+    print(insertion)
 
 
 
