@@ -26,15 +26,29 @@ def read_data(file_name):
 
     return data
 
-def selection_sort(seznam):
+def selection_sort(seznam, direction):
     size = len(seznam)
-    for idx in range(size):
-        min_idx = idx
 
-        for i in range(idx + 1, size):
-            if seznam[i] < seznam[min_idx]:
-                min_idx = i
-        (seznam[idx], seznam[min_idx]) = (seznam[min_idx], seznam[idx])
+    if direction == "v":
+        for idx in range(size):
+            min_idx = idx
+
+            for i in range(idx + 1, size):
+                if seznam[i] < seznam[min_idx]:
+                    min_idx = i
+            (seznam[idx], seznam[min_idx]) = (seznam[min_idx], seznam[idx])
+
+    elif direction == "s":
+        for idx in range(size):
+            max_idx = idx
+
+            for i in range(idx + 1, size):
+                if seznam[i] > seznam[max_idx]:
+                    max_idx = i
+            (seznam[idx], seznam[max_idx]) = (seznam[max_idx], seznam[idx])
+
+    else:
+        seznam
 
     return seznam
 
@@ -44,7 +58,7 @@ def main():
     file_name = "numbers.csv"
     data = read_data(file_name)
     seznam = [9, 2, 3, 4]
-    selection = selection_sort(seznam)
+    selection = selection_sort(seznam, "s")
     print(selection)
 
 
