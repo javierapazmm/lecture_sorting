@@ -13,7 +13,7 @@ def read_data(file_name):
     cwd_path = os.getcwd()
     file_path = os.path.join(cwd_path, file_name)
     data = {}
-    with open(file_path, "r", newline= "") as csvfile:
+    with open(file_path, "r", ) as csvfile:
         csv_reader = csv.reader(csvfile)
         headers = next(csvfile)
 
@@ -52,14 +52,24 @@ def selection_sort(seznam, direction):
 
     return seznam
 
+def bubble_sort(seznam):
+    size = len(seznam)
+    for i in range(size):
+        for j in range(0, size - i -1):
+            if seznam[j] > seznam[j+1]:
+                (seznam[j],seznam[j+1]) = (seznam[j+1], seznam[j])
 
+
+    return seznam
 
 def main():
     file_name = "numbers.csv"
     data = read_data(file_name)
-    seznam = [9, 2, 3, 4]
+    seznam = [9, 2, 3, 4, 7, 5, 9, 12]
     selection = selection_sort(seznam, "s")
-    print(selection)
+    sort = bubble_sort(seznam)
+
+    print(sort)
 
 
 
